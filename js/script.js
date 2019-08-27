@@ -1,7 +1,7 @@
 const cars = [
-	{ name: 'BMW M2 Coupe',
-			price: '20000',
-			img: 'img/bmw-m2-1.jpg'
+	{ name: 'BMW M2 Coupe', 
+	  price: '20000',
+	  img: 'img/bmw-m2-1.jpg'
 	 },
 	{ name: 'Audi TT',
 			price: '15000',
