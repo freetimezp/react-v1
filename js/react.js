@@ -12,33 +12,36 @@ function Car(props) {
 		)
 }
 
+class App extends React.Component {
 
-const app = (
-	<div className="app">
-		<div className="list">
-			<Car car={{ 
-				name: 'BMW M2 Coupe', 
-				price: '20000',
-				img: 'img/bmw-m2-1.jpg'
-			 }} />
-			 <Car car={{ 
-			 	name: 'Audi TT',
-		  	price: '15000',
-			  img: 'img/audi-tt-1.jpg'
-   	 }} />
-			 <Car car={{ 
-			 	name: 'Rolls Royce',
-		  	price: '50000',
-		  	img: 'img/rolls-royce-1.jpg'
-	    }} />
-			 <Car car={{ 
-			 	name: 'Mercedes amg',
-		  	price: '18000',
-		  	img: 'img/mercedes-amg-1.jpg'
-	    }} />
-	 </div>
-	</div>
-)
+	state = {
+		cars: [
+			{ name: 'BMW M2 Coupe', price: '20000', img: 'img/bmw-m2-1.jpg'},
+			{ name: 'Audi TT',	price: '15000',	img: 'img/audi-tt-1.jpg'},
+			{ name: 'Rolls Royce',	price: '50000',	img: 'img/rolls-royce-1.jpg'},
+			{ name: 'Mercedes amg',	price: '18000',	img: 'img/mercedes-amg-1.jpg'}
+ 	]
+ }
 
 
-ReactDOM.render(app, document.getElementById('root'))
+ renderCars() {
+ 	return this.state.cars.map(car => {
+				return ( <Car car={car} key={car.name + Math.random()} />	)
+		}) 
+ }
+
+
+
+
+	render() {
+		return (
+			<div className="app">
+				<div className="list">
+					{ this.renderCars() }
+		 	</div>
+			</div>
+		)
+	}
+}
+
+ReactDOM.render(<App />, document.getElementById('root'))
